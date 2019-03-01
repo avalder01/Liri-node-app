@@ -11,9 +11,9 @@ const spotify = new Spotify(keys.spotify);
 const action = process.argv[2];
 const data = process.argv.slice(3) ;
 
-function spotify(song) {
+function spotifySong(song) {
     // TODO: Make sure to load correct song.
-    if (!song) song = 'The Sign';
+    if (!song) song = 'The Sign by Ace of Base';
     spotify
         .search({ type: 'track', query: song })
         .then(response => {
@@ -89,14 +89,14 @@ function movie(movieName) {
             return console.log(error)
           }
           let arg = data.split(',')[1]
-          callSpotifyApi(arg)
+          spotifySong(arg)
         })
       }
       
 
 function parseInputs(action, data) {
     if (action === 'spotify-this-song') {
-        spotify(data);
+        spotifySong(data);
     } else if (action === 'movie-this') {
         movie(data);
     } else if (action === 'concert-this') {
